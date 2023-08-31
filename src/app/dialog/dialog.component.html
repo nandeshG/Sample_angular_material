@@ -1,0 +1,23 @@
+<div>
+    <h2 mat-dialog-title>fill the form</h2>
+    <mat-dialog-content [formGroup]="form">
+        <mat-form-field>
+            <mat-label>name</mat-label>
+            <input type="text" #name matInput formControlName="empName">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input type="text" #age matInput formControlName="age">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Works For</mat-label>
+            <input type="text" #company matInput formControlName="comapany">
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>back</button>
+        <button mat-raised-button mat-dialog-close (click)="addEmployee(name.value,age.value,company.value)">Add Employee</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,21 @@
+
+        <div cdkDropListGroup>
+            <mat-list (cdkDropListDropped)="multiDrop($event)" cdkDropList [cdkDropListData]="lessons">
+                <h2>lessons to watch</h2>
+                <mat-list-item cdkDrag role="listitem" *ngFor="let lesson of lessons">
+                    <div class="list-item" >{{lesson.description}}</div>
+                </mat-list-item>    
+            </mat-list>
+            
+            <mat-list (cdkDropListDropped)="multiDrop($event)" cdkDropList [cdkDropListData]="Done">
+                <h2>Done</h2>
+                <mat-list-item cdkDrag role="listitem" *ngFor="let lesson of Done">
+                    <div class="list-item" >{{lesson?.description}}</div>
+                </mat-list-item>
+            </mat-list>
+        </div>       
+
+
+
+
+

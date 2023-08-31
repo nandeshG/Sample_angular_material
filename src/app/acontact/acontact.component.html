@@ -1,0 +1,68 @@
+<div class="mat-elevation-z10">
+    <table mat-table matSort [dataSource]="dataSource" multiTemplateDataRows>
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox [checked]="isSelectAll()" (click)="toggleAll()" [indeterminate]="!isSelectAll()">
+
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+            <mat-checkbox (change)="onSelectToggle(element)" [checked]="selection.isSelected(element)"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Symbol </th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" colspan="5">{{element.longDescription}}</td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="epandRow(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row [class.collapse]="row != expandedRow" *matRowDef="let row; columns: ['expandedDetail']"></tr>
+      </table>
+      
+      <mat-paginator  [pageSizeOptions]="[3,5]"></mat-paginator>
+</div>
+<!-- 
+<mat-tree class="example-tree mat-elevation-z4" [dataSource]="nestedTreeNodeDataSource" [treeControl]="nestedTreeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+      {{node.name}}
+  </mat-tree-node>
+  <mat-nested-tree-node *matTreeNodeDef="let node; when:hasNestedChild">
+      <div class="mat-tree-node">
+        <button mat-icon-button matTreeNodeToggle>
+          <mat-icon>{{nestedTreeControl.isExpanded(node) ? "expand_more" : "chevron_right"}}</mat-icon>
+        </button>
+        {{node.Name}}
+      </div>
+      <div class="nested-node" [class.example-trees]="!nestedTreeControl.isExpanded(node)">
+        <ng-container matTreeNodeOutlet></ng-container>
+      </div>      
+  </mat-nested-tree-node>
+</mat-tree> -->

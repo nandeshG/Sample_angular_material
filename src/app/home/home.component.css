@@ -1,0 +1,8 @@
+.list-item{
+    border: 1px solid lightgray;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: lightgrey;
+    max-width: 500px;
+    align-items: center;
+}
